@@ -137,8 +137,8 @@
             margin-left: 30px;
         }
         
-        .question-answer label {
-            display: block;
+        .question-answer div {
+            display: inline;
         }
         
         label.radio:before {
@@ -227,9 +227,21 @@
                 <label for="name">Full Name<span>*</span></label>
                 <input id="name" type="text" name="FullName" required/>
             </div>
+            <div class="question">
+                <div class="question-answer">
+                    <div>
+                        <input type="radio" value="Yes" id="radio_1" name="Accepting" />
+                        <label for="radio_1" class="radio"><span>Accept</span></label>
+                    </div>
+                    <div>
+                        <input type="radio" value="No" id="radio_2" name="Accepting" />
+                        <label for="radio_2" class="radio"><span>Decline</span></label>
+                    </div>
+                </div>
+            </div>
             <div class="item">
-                <p>Menu preferences</p>
-                <select id="menuPreferences" name="MenuPreferences" form="rsvp">
+                <p style="display:inline; margin-right:10px;">Menu preferences:</p>
+                <select id="menuPreferences" name="MenuPreferences" form="rsvp" style="width:200px;">
                     <option value="No Preferences" selected>No Preferences</option>
                     <option value="Pescetarian">Pescetarian</option>
                     <option value="Vegetarian">Vegetarian</option>
@@ -248,11 +260,10 @@
                         <label for="radio_4" class="radio"><span>No</span></label>
                     </div>
                 </div>
-            </div>
-            <div class="item">
                 <label for="email">Guest Full Name</label>
                 <input id="guestName" type="text" name="GuestName" />
             </div>
+            <div class="item"></div>
             <div class="question">
                 <label>Do you need accomodation?</label>
                 <div class="question-answer">
@@ -266,15 +277,15 @@
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <label for="checkIn">Check-in</label>
-                <input id="checkIn" type="date" name="CheckIn" />
-                <i class="fas fa-calendar-alt" style="margin-right:5px;"></i>
-            </div>
-            <div class="item">
+            <div class="item" style="width:49%;float:right;">
                 <label for="checkOut">Check-out</label>
                 <input id="checkOut" type="date" name="CheckOut" />
-                <i class="fas fa-calendar-alt" style="margin-right:5px;"></i>
+                <i class="fas fa-calendar-alt" style="margin-right:10px;"></i>
+            </div>
+            <div class="item" style="width:49%;">
+                <label for="checkIn">Check-in</label>
+                <input id="checkIn" type="date" name="CheckIn" />
+                <i class="fas fa-calendar-alt" style="margin-right:10px;"></i>
             </div>
             <div class="btn-block">
                 <button type="submit">SUBMIT</button>
