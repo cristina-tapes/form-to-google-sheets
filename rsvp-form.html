@@ -287,24 +287,27 @@
                 <input id="checkIn" type="date" name="CheckIn" />
                 <i class="fas fa-calendar-alt" style="margin-right:10px;"></i>
             </div>
+            <input id="reset" type="reset" hidden/>
             <div class="btn-block">
                 <button type="submit">SUBMIT</button>
             </div>
         </form>
     </div>
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzcQHs-6sK6I-M3eGHckHBcJmZ6oQiyoJImhY0uiwoChmLCWDI/exec'
-        const form = document.forms['rsvp']
-
-        form.addEventListener('submit', e => {
-            e.preventDefault()
+        document.getElementById('rsvp').onsubmit = function onSubmitForm(event) {
+            let scriptURL = 'https://script.google.com/macros/s/AKfycbzcQHs-6sK6I-M3eGHckHBcJmZ6oQiyoJImhY0uiwoChmLCWDI/exec';
+            let form = document.getElementById('rsvp');
+            event.preventDefault();
             fetch(scriptURL, {
                     method: 'POST',
                     body: new FormData(form)
                 })
                 .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
-        })
+                .catch(error => console.error('Error!', error.message));
+            document.getElementById('reset').click();
+            return false;
+
+        }
     </script>
 </body>
 
