@@ -1,3 +1,5 @@
+
+  
 <html>
 
 <head>
@@ -224,23 +226,23 @@
     <div class="testbox">
         <form id="rsvp">
             <div class="item">
-                <label for="name">Full Name<span>*</span></label>
-                <input id="name" type="text" name="FullName" required/>
+                <input id="name" type="text" name="FullName" placeholder="Your Full Name" required/>
             </div>
             <div class="question">
+                <label>Can you join us?<span style="color:red;margin-left:0px;">*</span></label>
                 <div class="question-answer">
                     <div>
-                        <input type="radio" value="Yes" id="radio_1" name="Accepting" />
-                        <label for="radio_1" class="radio"><span>Accept</span></label>
+                        <input type="radio" value="Yes" id="radio_1" name="Accepting" checked="checked" required/>
+                        <label for="radio_1" class="radio"><span>Can't wait!!!</span></label>
                     </div>
                     <div>
                         <input type="radio" value="No" id="radio_2" name="Accepting" />
-                        <label for="radio_2" class="radio"><span>Decline</span></label>
+                        <label for="radio_2" class="radio"><span>Can't make it</span></label>
                     </div>
                 </div>
             </div>
             <div class="item">
-                <p style="display:inline; margin-right:10px;">Menu preferences:</p>
+                <p >Meal preferences:</p>
                 <select id="menuPreferences" name="MenuPreferences" form="rsvp" style="width:200px;">
                     <option value="No Preferences" selected>No Preferences</option>
                     <option value="Pescetarian">Pescetarian</option>
@@ -249,19 +251,27 @@
                 </select>
             </div>
             <div class="question">
-                <label>Bringing a guest?</label>
+                <label>Will you be joining</label>
                 <div class="question-answer">
                     <div>
                         <input type="radio" value="Yes" id="radio_3" name="BringingGuest" />
-                        <label for="radio_3" class="radio"><span>Yes</span></label>
+                        <label for="radio_3" class="radio"><span>With...(please specify name below)</span></label>
                     </div>
                     <div>
                         <input type="radio" value="No" id="radio_4" name="BringingGuest" />
-                        <label for="radio_4" class="radio"><span>No</span></label>
+                        <label for="radio_4" class="radio"><span>Alone</span></label>
                     </div>
                 </div>
-                <label for="email">Guest Full Name</label>
-                <input id="guestName" type="text" name="GuestName" />
+                <input id="guestName" type="text" name="GuestName" placeholder="Full Name of your date"/>
+            </div>                            
+            <div class="item">
+                <p>Meal preferences:</p>
+                <select id="menuPreferences" name="MenuPreferences" form="rsvp" style="width:200px;">
+                    <option value="No Preferences" selected>No Preferences</option>
+                    <option value="Pescetarian">Pescetarian</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                </select>
             </div>
             <div class="item"></div>
             <div class="question">
@@ -294,19 +304,29 @@
         </form>
     </div>
     <script>
-        document.getElementById('rsvp').onsubmit = function onSubmitForm(event) {
-            let scriptURL = 'https://script.google.com/macros/s/AKfycbzcQHs-6sK6I-M3eGHckHBcJmZ6oQiyoJImhY0uiwoChmLCWDI/exec';
-            let form = document.getElementById('rsvp');
-            event.preventDefault();
-            fetch(scriptURL, {
+
+    document.getElementById('rsvp').onsubmit = function onSubmitForm(event) {
+    	let scriptURL = 'https://script.google.com/macros/s/AKfycbzcQHs-6sK6I-M3eGHckHBcJmZ6oQiyoJImhY0uiwoChmLCWDI/exec';
+        let form = document.getElementById('rsvp');
+        event.preventDefault();
+        fetch(scriptURL, {
                     method: 'POST',
                     body: new FormData(form)
                 })
                 .then(response => console.log('Success!', response))
                 .catch(error => console.error('Error!', error.message));
-            document.getElementById('reset').click();
-            return false;
-        }
+        document.getElementById('reset').click();
+        return false;
+                
+    }
+function setMinValueForCheckout(val) {
+  let checkout = document.getElementById("checkOut");
+  checkout.min = val;
+  console.log(val);
+}
+    </script>
+    <script>
+
     </script>
 </body>
 
